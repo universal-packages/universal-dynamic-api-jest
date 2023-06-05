@@ -1,4 +1,4 @@
-# Dynamic APi Jest
+# Dynamic Api Jest
 
 [![npm version](https://badge.fury.io/js/@universal-packages%2Fdynamic-api-jest.svg)](https://www.npmjs.com/package/@universal-packages/dynamic-api-jest)
 [![Testing](https://github.com/universal-packages/universal-dynamic-api-jest/actions/workflows/testing.yml/badge.svg)](https://github.com/universal-packages/universal-dynamic-api-jest/actions/workflows/testing.yml)
