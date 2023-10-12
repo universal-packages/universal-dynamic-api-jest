@@ -1,5 +1,6 @@
 import { DynamicApi } from '@universal-packages/dynamic-api'
 
+import '../src'
 import GoodDynamic from './__fixtures__/Good.dynamic'
 import GoodBeforeHookDynamic from './__fixtures__/GoodBeforeHook.dynamic'
 

@@ -1,6 +1,7 @@
 import { DynamicApi } from '@universal-packages/dynamic-api'
 import stripAnsi from 'strip-ansi'
 
+import '../src'
 import ExcellentDynamic from './__fixtures__/Excellent.dynamic'
 import GoodDynamic from './__fixtures__/Good.dynamic'
 
