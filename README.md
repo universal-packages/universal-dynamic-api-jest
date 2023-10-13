@@ -16,10 +16,12 @@ npm install @universal-packages/dynamic-api
 
 ## Setup
 
-Import this library in your `<setupTests>` file.
+Add the following to your `jest.config.js` or where you configure Jest:
 
 ```js
-import '@universal-packages/dynamic-api-jest'
+module.exports = {
+  setupFilesAfterEnv: ['@universal-packages/dynamic-api-jest']
+}
 ```
 
 ## Matchers
