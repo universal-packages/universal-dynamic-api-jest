@@ -78,6 +78,12 @@ it('should have hooked MyHook after MyDynamic', async () => {
 
 ## Typescript
 
+In order for typescript to see the global types you need to reference the types somewhere in your project, normally `./src/globals.d.ts`.
+
+```ts
+/// <reference types="@universal-packages/dynamic-api-jest" />
+```
+
 This library is developed in TypeScript and shipped fully typed.
 
 ## Contributing
