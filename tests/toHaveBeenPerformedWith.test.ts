@@ -75,7 +75,7 @@ describe('dynamic-api-jest', (): void => {
         error = e
       }
 
-      expect(stripAnsi(error.message)).toEqual('expected \"GoodDynamic\" not to have been performed with the given payload, but it was')
+      expect(stripAnsi(error.message)).toEqual('expected "GoodDynamic" not to have been performed with the given payload, but it was')
     })
   })
 })
