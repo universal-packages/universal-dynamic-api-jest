@@ -7,7 +7,7 @@ beforeEach(() => {
   DynamicApi.debugLog.length = 0
 })
 
-function toHaveBeenPerformed(dynamic: DynamicClassLike) {
+function toHaveBeenPerformed(dynamic: DynamicClassLike): jest.CustomMatcherResult {
   const Api = dynamic.__api
   const name = dynamic.__name
   const isHook = dynamic.__lifeCycle ? true : false
@@ -48,7 +48,7 @@ function toHaveBeenPerformed(dynamic: DynamicClassLike) {
   }
 }
 
-function toHaveBeenPerformedWith(dynamic: DynamicClassLike, payload: Record<string, any>) {
+function toHaveBeenPerformedWith(dynamic: DynamicClassLike, payload: Record<string, any>): jest.CustomMatcherResult {
   const Api = dynamic.__api
   const name = dynamic.__name
   const isHook = dynamic.__lifeCycle ? true : false
@@ -73,24 +73,18 @@ function toHaveBeenPerformedWith(dynamic: DynamicClassLike, payload: Record<stri
 
   if (pass) {
     return {
-      message: () => `expected ${this.utils.printReceived(dynamic['name'])} not to have been performed with ${this.utils.printReceived(payload)}, but it was`,
+      message: () => `expected ${this.utils.printReceived(dynamic['name'])} not to have been performed with the given payload, but it was`,
       pass: true
     }
   } else {
     return {
       message: () => {
         if (performed.length === 0) {
-          return `expected ${this.utils.printReceived(dynamic['name'])} to have been performed with ${this.utils.printReceived(payload)} but no dynamics were performed`
+          return `expected ${this.utils.printReceived(dynamic['name'])} to have been performed with the given payload but no dynamics were performed at all`
         } else {
-          const toPrint = performed
-            .map((debugLog) => {
-              if (typeof debugLog.payload === 'object' && typeof payload === 'object') return this.utils.printExpected(this.utils.diff(payload, debugLog.payload))
+          const toPrint = performed.map((debugLog) => this.utils.diff(payload, debugLog.payload)).join('\n\n')
 
-              return this.utils.printExpected(debugLog.payload)
-            })
-            .join('\n\n')
-
-          return `expected ${this.utils.printReceived(dynamic['name'])} to have been performed with ${this.utils.printReceived(payload)} but dynamic was performed with: ${toPrint}`
+          return `expected ${this.utils.printReceived(dynamic['name'])} to have been performed with the given payload but it was not\n\nPayloads were:\n${toPrint}`
         }
       },
 
@@ -99,7 +93,7 @@ function toHaveBeenPerformedWith(dynamic: DynamicClassLike, payload: Record<stri
   }
 }
 
-function toHaveBeenHookedBefore(hook: DynamicClassLike, dynamic: DynamicClassLike) {
+function toHaveBeenHookedBefore(hook: DynamicClassLike, dynamic: DynamicClassLike): jest.CustomMatcherResult {
   const Api = hook.__api
   const name = hook.__name
   const isHook = hook.__lifeCycle ? true : false
@@ -157,7 +151,7 @@ function toHaveBeenHookedBefore(hook: DynamicClassLike, dynamic: DynamicClassLik
   }
 }
 
-function toHaveBeenHookedAfter(hook: DynamicClassLike, dynamic: DynamicClassLike) {
+function toHaveBeenHookedAfter(hook: DynamicClassLike, dynamic: DynamicClassLike): jest.CustomMatcherResult {
   const Api = hook.__api
   const name = hook.__name
   const isHook = hook.__lifeCycle ? true : false

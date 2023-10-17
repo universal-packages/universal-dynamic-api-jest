@@ -37,7 +37,7 @@ describe('dynamic-api-jest', (): void => {
         error = e
       }
 
-      expect(stripAnsi(error.message)).toEqual('expected "GoodDynamic" to have been performed with {"call": 1, "good": true} but no dynamics were performed')
+      expect(stripAnsi(error.message)).toEqual('expected "GoodDynamic" to have been performed with the given payload but no dynamics were performed at all')
     })
 
     it('fails and shows the if a dynamic was not performed with a payload and tells which ones where', async (): Promise<void> => {
@@ -56,7 +56,7 @@ describe('dynamic-api-jest', (): void => {
       }
 
       expect(stripAnsi(error.message)).toEqual(
-        'expected "GoodDynamic" to have been performed with {"call": 1, "good": true} but dynamic was performed with: "- Expected\n+ Received·\n  Object {\n-   \\"call\\": 1,\n-   \\"good\\": true,\n+   \\"call\\": 2,\n+   \\"excellent\\": true,\n  }"'
+        'expected "GoodDynamic" to have been performed with the given payload but it was not\n\nPayloads were:\n- Expected\n+ Received\n\n  Object {\n-   "call": 1,\n-   "good": true,\n+   "call": 2,\n+   "excellent": true,\n  }'
       )
     })
 
@@ -75,7 +75,7 @@ describe('dynamic-api-jest', (): void => {
         error = e
       }
 
-      expect(stripAnsi(error.message)).toEqual('expected "GoodDynamic" not to have been performed with {"call": 1, "good": true}, but it was')
+      expect(stripAnsi(error.message)).toEqual('expected \"GoodDynamic\" not to have been performed with the given payload, but it was')
     })
   })
 })
