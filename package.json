@@ -16,7 +16,7 @@
     "update-dependents": "umaintenance update-dependents"
   },
   "peerDependencies": {
-    "@universal-packages/dynamic-api": "^1.7.4"
+    "@universal-packages/dynamic-api": "^1.7.5"
   },
   "devDependencies": {
     "@trivago/prettier-plugin-sort-imports": "^4.2.0",
