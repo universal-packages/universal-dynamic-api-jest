@@ -1,6 +1,6 @@
 {
   "name": "@universal-packages/dynamic-api-jest",
-  "version": "1.0.15",
+  "version": "1.0.16",
   "description": "Jest matchers for Dynamic Api",
   "author": "David De Anda <david@universal-packages.com> (https://github.com/universal-packages)",
   "license": "MIT",
