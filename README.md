@@ -76,6 +76,23 @@ it('should have hooked MyHook after MyDynamic', async () => {
 })
 ```
 
+### Mocking dynamic return values
+
+If you need to force a dynamic to return a specific value, you can use the `mockDynamicReturnValue` function.
+
+```js
+import { MyDynamic } from './MyDynamic'
+
+it('should have performed MyDynamic', async () => {
+  dynamicApiJest.mockDynamicReturnValue(MyDynamic, { foo: 'bar' })
+
+  const result = await dynamicApi.perform('my-dynamic')
+
+  expect(MyDynamic).toHaveBeenPerformed()
+  expect(result).toEqual({ foo: 'bar' })
+})
+```
+
 ## Typescript
 
 In order for typescript to see the global types you need to reference the types somewhere in your project, normally `./src/globals.d.ts`.

@@ -3,6 +3,16 @@ import { DynamicApi, DynamicClassLike } from '@universal-packages/dynamic-api'
 
 import './globals'
 
+global.dynamicApiJest = {
+  mockDynamicReturnValue: (Dynamic: DynamicClassLike, value: any): void => {
+    const originalPerform = Dynamic.prototype.perform
+    Dynamic.prototype.perform = jest.fn().mockImplementationOnce(() => {
+      Dynamic.prototype.perform = originalPerform
+      return value
+    })
+  }
+}
+
 beforeEach(() => {
   DynamicApi.debugLog.length = 0
 })

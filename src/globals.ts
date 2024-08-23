@@ -1,6 +1,7 @@
-import { DynamicClassLike } from '@universal-packages/dynamic-api'
-
 declare global {
+  namespace dynamicApiJest {
+    function mockDynamicReturnValue(dynamic: any, value?: any): void
+  }
   namespace jest {
     interface Matchers<R> {
       toHaveBeenPerformed(): R
